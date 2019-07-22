@@ -58,9 +58,7 @@ Arrays have a reverse method that changes the array by inverting the order
 in which its elements appear. For this exercise, write two functions, 
 reverseArray and reverseArrayInPlace. The first, reverseArray, takes 
 an array as argument and produces a new array that has the same elements 
-in the inverse order. The second, reverseArrayInPlace, does what the reverse 
-method does: it modifies the array given as argument by reversing its 
-elements. Neither may use the standard reverse method.
+in the inverse order.
 */
 
 let reverseArray = (array) => {
@@ -71,18 +69,23 @@ let reverseArray = (array) => {
     return newArray;
 }
 
+/*
+The second, reverseArrayInPlace, does what the reverse 
+method does: it modifies the array given as argument by reversing its 
+elements. Neither may use the standard reverse method.
+*/
 
-    let array = [99,13,24,55,888];
+
     let reverseArrayInPlace = (array) => {
-        let lastEl=0
-        let arrCopy = array;
-        for( i=0; i < array.length; i++) {
-            
-        array[i] = arrCopy[-1];
-        
+        let arrLgth = array.length;
+        // add the reversed array to the front of the original
+       for( i=0; i < arrLgth; i++) {
+       array.unshift(array[i*2]);
         }
-        console.log(arrCopy);
-        return array    
-        
+        // Remove original (non-reversed) array chunk
+        array.splice(array.length/2);
+        return array
     };
-    reverseArrayInPlace(array);
+
+
+    
